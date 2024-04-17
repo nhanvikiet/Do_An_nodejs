@@ -1,0 +1,65 @@
+<!-- views/categories.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-success {
+            background-color: green;
+        }
+
+        .btn-update {
+            background-color: yellow;
+        }
+
+        .btn-delete {
+            background-color: red;
+        }
+
+        .table th, .table td {
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Categories</h2>
+        <h3><button class="btn btn-update" onclick="window.location.href='/products/list'">List Product</button></h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Thể Loại</th>
+                    <th>Chức Năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach(function(category, index) { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= category.name %></td>
+                        <td>
+                            <!-- Thêm đường dẫn cho button Update -->
+                            <a href="/categories/update/<%= category._id %>" >
+                                <button class="btn btn-update" type="button">Update</button>
+                            </a>
+            
+                            <!-- Thêm đường dẫn cho button Delete -->
+                            <a href="/categories/delete/<%= category._id %>" >
+                                <button class="btn btn-delete" type="button">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <button class="btn btn-success" onclick="window.location.href='/categories/add'">Add Category</button>
+    </div>
+</body>
+
+</html>

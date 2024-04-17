@@ -1,0 +1,75 @@
+<!-- views/register.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/stylesheets/styleRegister.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="circle"></div>
+    <div class="card">
+        <i class='bx bx-book-open'  style="font-size: 60px ; color: blue;"></i></i>
+        <h2>Create Account</h2>
+        <form class="form" action="/authen/register" method="post">
+           
+            <input type="text" placeholder="Name" id="userName" name="userName" required>
+            <input type="email" placeholder="Email" id="email" name="email" required>
+            <input type="password" placeholder="Password" id="password" name="password" required>
+            
+            
+            <select  id="role" name="role">
+                <% options.roles.forEach(function(role) { %>
+                    <option value="<%= role %>"><%= role.charAt(0).toUpperCase() + role.slice(1) %></option>
+                <% }); %>
+            </select>
+            <button type="submit">SIGN UP</button>
+           
+        </form>
+        <footer>
+            Existing users, sign in
+            <a href="/login">Here</a>
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+
+
+<!--    
+        <h2>Register</h2>
+        <form action="/authen/register" method="post">
+            <div class="mb-3">
+                <label for="userName" class="form-label">Username</label>
+                <input type="text" class="form-control" id="userName" name="userName" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" id="role" name="role">
+                    <% options.roles.forEach(function(role) { %>
+                        <option value="<%= role %>"><%= role.charAt(0).toUpperCase() + role.slice(1) %></option>
+                    <% }); %>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form> -->
+    
+</body>
+</html>

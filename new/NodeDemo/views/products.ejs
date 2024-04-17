@@ -1,0 +1,68 @@
+<!-- views/products.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-success {
+            background-color: green;
+        }
+
+        .btn-update {
+            background-color: yellow;
+        }
+
+        .btn-delete {
+            background-color: red;
+        }
+
+        .table th, .table td {
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Products</h2>
+        <h3><button class="btn btn-update" onclick="window.location.href='/categories/list'">List Category</button></h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-1">STT</th>
+                    <th class="col-2">Name</th>
+                    <th class="col-4">Description</th>
+                    <th class="col-1">Price</th>
+                    <th class="col-2">Category</th>
+                    <th class="col-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(function(product, index) { %>
+                    <tr>
+                        <td class="col-1"><%= index + 1 %></td>
+                        <td class="col-2"><%= product.name %></td>
+                        <td class="col-4"><%= product.description %></td>
+                        <td class="col-1"><%= product.price %></td>
+                        <td class="col-2"><%= product.category.name %></td>
+                        <td class="col-2">
+                            <a href="/products/update/<%= product._id %>">
+                                <button class="btn btn-update" type="button">Update</button>
+                            </a>
+                            <a href="/products/delete/<%= product._id %>">
+                                <button class="btn btn-delete" type="button">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <button class="btn btn-success" onclick="window.location.href='/products/add'">Add Product</button>
+    </div>
+</body>
+
+</html>
